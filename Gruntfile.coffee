@@ -1,16 +1,14 @@
 module.exports = (grunt) ->
   grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.initConfig
+    clean: ["dest"]
     assemble:
       options:
-        engine: 'consolidate'
-        initializeEngine: (engine, options) =>
-
-          a = engine.engine.jade.init(options)
-        #layout: "src/layouts/layout.jade"
+        engine: 'jade'
         flatten: true
       project:
         files :
-          "dest/" : "src/pages/*.jade"
+          "dest/" : "src/*.jade"
   grunt.loadNpmTasks('assemble' );
-  grunt.registerTask('default', ['assemble' ]);
+  grunt.registerTask('default', ['dest', 'assemble' ]);
