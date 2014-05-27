@@ -3,10 +3,14 @@ module.exports = (grunt) ->
   grunt.initConfig
     assemble:
       options:
-        layout: "src/layouts/layout.hbs",
+        engine: 'consolidate'
+        initializeEngine: (engine, options) =>
+
+          a = engine.engine.jade.init(options)
+        #layout: "src/layouts/layout.jade"
+        flatten: true
       project:
-        files:
-          dest : ["dest/**/*.hbs" ]
-          src : ["src/pages/*.hbs"]
+        files :
+          "dest/" : "src/pages/*.jade"
   grunt.loadNpmTasks('assemble' );
   grunt.registerTask('default', ['assemble' ]);
