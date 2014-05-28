@@ -1,14 +1,8 @@
 module.exports = (grunt) ->
-  grunt.loadNpmTasks('assemble');
-  grunt.loadNpmTasks('grunt-contrib-clean');
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
   grunt.initConfig
-    clean: ["dest"]
-    assemble:
-      options:
-        engine: 'jade'
-        flatten: true
-      project:
-        files :
-          "dest/" : "src/*.jade"
+    clean: "dest"
+    jade:
   grunt.loadNpmTasks('assemble' );
   grunt.registerTask('default', ['dest', 'assemble' ]);
