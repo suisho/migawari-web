@@ -2,11 +2,38 @@ module.exports = (grunt) ->
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   grunt.initConfig
-    clean: "dest"
+    clean: ["public"]
+    jade:
+      src:
+        files: [
+          expand: true
+          cwd: "src/views/"
+          src: "**/*.jade"
+          dest: "public"
+          ext: ".html"
+        ]
+    stylus:
+      src:
+        files: [
+          expand: true
+          cwd: "src/assets"
+          src: "css/**/*.styl"
+          dest: "public"
+          ext: ".css"
+        ]
+    copy:
+      src:
+        files:[
+          expand: true
+          cwd: "src/assets"
+          src: "js/**/*.js"
+          dest: "public"
+          
+        ]
     browserify:
       dist:
         files:
-          "public/js/migawari.js" : ["node_modules/migawari/index.js"]
+          "public/js/client.js" : ["lib/client.js"]
     'gh-pages':
       public:
         options:
@@ -17,6 +44,17 @@ module.exports = (grunt) ->
       server:
         options:
           port: 7777
-          base: 'public'
+          base: 'public/'
           keepalive :true
           hostname: '*'
+          middleware: (connect, options) ->
+            return [
+              #require('connect-livereload')(),
+              connect.static(options.base[0])
+            ];
+    watch:
+      src:
+        files: 'src/**/*'
+        tasks: 'compile'
+    grunt.registerTask 'compile', ['clean', 'jade', 'stylus', 'copy', 'browserify']
+    grunt.registerTask 'server', ['compile', 'connect']
