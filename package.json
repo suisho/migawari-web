@@ -22,6 +22,7 @@
     "migawari": "^0.3.0"
   },
   "devDependencies": {
+    "browserify": "^4.1.6",
     "connect-livereload": "^0.4.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^2.1.0",
@@ -32,6 +33,7 @@
     "grunt-contrib-stylus": "^0.16.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-gh-pages": "^0.9.1",
+    "gulp": "^3.6.2",
     "matchdep": "^0.3.0"
   }
 }
