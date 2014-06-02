@@ -8,4 +8,6 @@ window.migawari = migawari
 $("input.selector").on('keydown', function(){
   var migawarid = migawari($(this).val())
   $(".result").text(migawarid.toString())
+  
 })
+
