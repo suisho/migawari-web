@@ -16,7 +16,7 @@ module.exports = (grunt) ->
       src:
         files: [
           expand: true
-          cwd: "src/assets"
+          cwd: "src/"
           src: "css/**/*.styl"
           dest: "public"
           ext: ".css"
@@ -25,10 +25,9 @@ module.exports = (grunt) ->
       src:
         files:[
           expand: true
-          cwd: "src/assets"
+          cwd: "src/"
           src: "js/**/*.js"
-          dest: "public"
-          
+          dest: "public"  
         ]
     connect:
       server:
@@ -59,6 +58,11 @@ module.exports = (grunt) ->
       server:
         path: 'http://localhost:<%= connect.server.options.port %>'
     browserify:
+      options:
+        bundleOptions:
+          debug: true
+        browserifyOptions:
+          debug: true
       dist:
         files:
           "public/js/client.js" : ["src/lib/client.js"]
@@ -80,5 +84,5 @@ module.exports = (grunt) ->
         ]
   }
   grunt.initConfig config
-  grunt.registerTask 'compile', ['concurrent:compile']
+  grunt.registerTask 'compile', ['clean', 'concurrent:compile']
   grunt.registerTask 'server', ['compile', 'concurrent:server']
