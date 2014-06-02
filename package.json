@@ -22,6 +22,7 @@
     "migawari": "^0.3.0"
   },
   "devDependencies": {
+    "backbone": "^1.1.2",
     "browserify": "^4.1.6",
     "connect-livereload": "^0.4.0",
     "grunt": "^0.4.5",
@@ -36,6 +37,8 @@
     "grunt-gh-pages": "^0.9.1",
     "grunt-open": "^0.2.3",
     "gulp": "^3.6.2",
-    "matchdep": "^0.3.0"
+    "jquery": "^2.1.1",
+    "matchdep": "^0.3.0",
+    "vue": "^0.10.4"
   }
 }

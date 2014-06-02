@@ -82,6 +82,9 @@ module.exports = (grunt) ->
           'watch:src',
           'watch:public',
         ]
+       options:
+         logConcurrentOutput: true
+            
   }
   grunt.initConfig config
   grunt.registerTask 'compile', ['clean', 'concurrent:compile']
