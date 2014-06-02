@@ -2,11 +2,14 @@ var $ = require("jquery")
 var Backbone = require("backbone")
 Backbone.$ = $;
 var migawari = require("migawari")
+var pd = require("pretty-data").pd
 
 var ResultView = Backbone.View.extend({
   el : ".result",
   refresh : function(text){
-    this.$el.text(migawari(text).toString())
+    var html = migawari(text).toString()
+    html = pd.xml(html)
+    this.$el.text(html)
   }
 })
 var MigawariView = Backbone.View.extend({
