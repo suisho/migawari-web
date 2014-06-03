@@ -6,7 +6,6 @@ var pd = require("pretty-data").pd
 
 
 Backbone.$ = $;
-hljs.initHighlightingOnLoad()
 
 var ResultView = Backbone.View.extend({
   el : ".result",
@@ -14,6 +13,7 @@ var ResultView = Backbone.View.extend({
     var html = migawari(text).toString()
     html = pd.xml(html)
     this.$el.text(html)
+    hljs.highlightBlock(this.$el.get(0))
   }
 })
 var MigawariView = Backbone.View.extend({
@@ -23,7 +23,8 @@ var MigawariView = Backbone.View.extend({
   },
   el : ".console",
   events: {
-    "keydown input.selector" : "refresh"
+    "keydown input.selector" : "refresh",
+    "change input.selector" : "refresh"
   },
   refresh : function(){
     this.resultView.refresh(this.$input.val())
