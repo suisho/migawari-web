@@ -7,12 +7,17 @@ html
 
     title= title
     link(rel='stylesheet', href='css/master.css')
+    link(rel='stylesheet', href='css/vendor/obsidian.css')
   body
     h1 Migawari
     div.console
-      input.selector(value="a > b + #c .d")
-      pre
-        code.result
+      div
+        label Input : 
+        input.selector(value="a > b + #c .d")
+      div Output:
+      pre.result-container
+        code.result.html
+          | now loading...
     
     div
       div.center

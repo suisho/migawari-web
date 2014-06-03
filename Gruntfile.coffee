@@ -23,12 +23,17 @@ module.exports = (grunt) ->
         ]
     copy:
       src:
-        files:[
+        files:[{
           expand: true
           cwd: "src/"
           src: "js/**/*.js"
           dest: "public"  
-        ]
+        },{
+          expand: true
+          cwd: "src/"
+          src: "css/**/*.css"
+          dest: "public"  
+        }]
     connect:
       server:
         options:

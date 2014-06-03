@@ -1,8 +1,12 @@
 var $ = require("jquery")
 var Backbone = require("backbone")
-Backbone.$ = $;
 var migawari = require("migawari")
+var hljs = require("highlight.js")
 var pd = require("pretty-data").pd
+
+
+Backbone.$ = $;
+hljs.initHighlightingOnLoad()
 
 var ResultView = Backbone.View.extend({
   el : ".result",
